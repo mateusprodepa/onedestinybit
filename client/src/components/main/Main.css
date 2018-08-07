@@ -1,0 +1,10 @@
+.main {
+  background: linear-gradient(to bottom, #C0C0C0, #ECF0F1);
+  padding: 8px;
+  width: 80%;
+  display: block;
+  margin: auto;
+  margin-top: 25px;
+  margin-bottom: 25px;
+  box-shadow: 0 1.5px 5px rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,8 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-rendering: optimizeLegibility;
+  background: #383E7A;
+  background-attachment: fixed;
+  background-size: 100% 100%;
+}
