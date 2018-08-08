@@ -3,10 +3,11 @@ import React, { Component } from 'react';
 import './HomePage.css';
 
 import Logo from '../../assets/img/w35.png';
-import Main from '../../components/main/Main';
 
 // Componentes
+import Main from '../../components/main/Main';
 import Navbar from '../../components/navbar/Navbar';
+import Footer from '../../components/footer/Footer';
 
 class HomePage extends Component {
 
@@ -29,6 +30,7 @@ class HomePage extends Component {
         </div>
         <Main>
         </Main>
+        <Footer />
       </div>
     )
   }

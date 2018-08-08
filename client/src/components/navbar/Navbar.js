@@ -20,13 +20,16 @@ class Navbar extends Component {
               <NavLink to="/">Início</NavLink>
             </li>
             <li className="navbar__list__item">
-              <NavLink to="/">Loja</NavLink>
+              <NavLink to="/store">Loja</NavLink>
             </li>
             <li className="navbar__list__item">
-              <NavLink to="/" className="navbar__list__item--auth login">Login</NavLink>
+              <NavLink to="/login" className="navbar__list__item--auth login">Login</NavLink>
             </li>
             <li className="navbar__list__item">
-              <NavLink to="/" className="navbar__list__item--auth register">Registre-se</NavLink>
+              <NavLink to="/register" className="navbar__list__item--auth register">Registre-se</NavLink>
+            </li>
+            <li className="navbar__list__item trigram">
+              <a href="" onClick={ () => void(0) }>&#9781;</a>
             </li>
           </div>
         </ul>
