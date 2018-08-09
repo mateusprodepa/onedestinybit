@@ -17,10 +17,12 @@ class HomePage extends Component {
         <div className="banner">
           <div className="bg"></div>
           <Navbar />
-          <img
-            src={ Logo }
-            alt="Logo"
-            className="banner__logo" />
+          <div id="b">
+            <img
+              src={ Logo }
+              alt="Logo"
+              className="banner__logo" />
+          </div>
         </div>
         <div className="block">
           <div className="block__text">

@@ -1,3 +1,12 @@
+#b {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  transform: translateY(-10%);
+}
+
 .banner {
   height: 96vh;
   background: url(../../assets/img/bg.png);
