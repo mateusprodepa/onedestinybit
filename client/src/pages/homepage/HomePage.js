@@ -8,6 +8,7 @@ import Logo from '../../assets/img/w35.png';
 import Main from '../../components/main/Main';
 import Navbar from '../../components/navbar/Navbar';
 import Footer from '../../components/footer/Footer';
+import Noticias from '../../components/noticias/Noticias';
 
 class HomePage extends Component {
 
@@ -31,6 +32,7 @@ class HomePage extends Component {
           </div>
         </div>
         <Main>
+          <Noticias />
         </Main>
         <Footer />
       </div>

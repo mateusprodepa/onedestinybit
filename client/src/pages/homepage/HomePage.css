@@ -8,7 +8,7 @@
 }
 
 .banner {
-  height: 96vh;
+  height: 80vh;
   background: url(../../assets/img/bg.png);
   background-size: cover;
   background-position: right bottom;
@@ -35,7 +35,7 @@
 
 .block {
   background-color: #1F2250;
-  width: 80%;
+  width: 1520px;
   display: block;
   margin: 0 auto;
   margin-top: 45px;
@@ -68,6 +68,12 @@
 .block h3 {
   padding: 0;
   margin: 0;
+}
+
+@media screen and (max-width: 1800px) {
+  .block {
+    width: 80%;
+  }
 }
 
 @media screen and (max-width: 1024px) {
