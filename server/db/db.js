@@ -2,6 +2,8 @@ const mysql = require('mysql')
 
 let con
 
+// FRAMEWORKZINHO PRA TRABALHAR COM O MYSQL
+// NINGUEM GOSTA DE VDD DE MYSQL, POR ISSO EU FACILITEI
 module.exports = {
   connect: function() {
     return con = mysql.createConnection({
