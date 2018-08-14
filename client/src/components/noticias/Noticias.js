@@ -24,7 +24,6 @@ class Noticias extends Component {
     this.setState({ isLoading: true });
     axios.get(CONFIG.NEWS_URL)
     .then(res => {
-      console.log(res);
       if(res.data) {
         this.setState({
           noticias: [ ...res.data ],
@@ -39,23 +38,49 @@ class Noticias extends Component {
     });
   }
 
+  scrollBar(e) {
+    // e.target.scrollHeight 644
+    // e.target.scrollTop + e.target.clientHeight
+    // Number(window.getComputedStyle(e.target).height.match(/\d*/gi)[0]);
+    // e.target.clientHeight 220
+
+
+    if(e.scrollTop + e.clientHeight >= e.scrollHeight) {
+      e.scrollTop = 0;
+    } else {
+      const scroll = e.clientHeight - 7;
+      const actualScroll = e.scrollTop;
+      e.scrollTop = actualScroll + scroll;
+    }
+  }
+
   componentDidMount() {
     this.fetchNews();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.scrollInterval);
   }
 
   render() {
 
     const { noticias, isLoading } = this.state;
+    let content;
 
-    const content = isLoading ?
-    <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div> :
-    noticias.map((noticia, index) =>
-      <Noticia
-        id={ index }
-        key={ noticia.Codigo }
-        title={ noticia.Titulo}
-        img={ noticia.Imagem }
-        text={ noticia.Descricao } />)
+    if(isLoading) {
+      content = <div className="lds-roller"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    } else {
+      content = noticias.map((noticia, index) =>
+        <Noticia
+          id={ index }
+          key={ noticia.Codigo }
+          title={ noticia.Titulo}
+          img={ noticia.Imagem }
+          text={ noticia.Descricao } />);
+      this.scrollInterval = setInterval(() => {
+        this.scrollBar(this.noticias.current);
+      }, 3000);
+    }
 
     return (
       <div>

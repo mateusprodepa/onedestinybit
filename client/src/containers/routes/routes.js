@@ -7,6 +7,7 @@ import { isAuthenticated } from '../../utils/utils';
 
 // Páginas
 import HomePage from '../../pages/homepage/HomePage';
+import LoginPage from '../../pages/loginpage/LoginPage';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route { ...rest } render={props => (
@@ -22,7 +23,7 @@ const routes = () => (
   <BrowserRouter>
     <Switch>
       <Route component={ HomePage } path="/" exact strict />
-      <Route render={() => <h1>Eu sou a página de login</h1>} path="/login" exact strict />
+      <Route component={ LoginPage } path="/login" exact strict />
       <Route render={() => <h1>Eu sou a página de registro</h1>} path="/register" exact strict />
       <PrivateRoute render={() => <h1>Eu sou a página de perfil</h1>} path="/user" exact strict />
     </Switch>

@@ -85,7 +85,7 @@
   }
 
   .title {
-    background-color: #00152A;
+    background-color: #212760;
     margin: 0;
     padding: 14px;
     font-family: Constantia;
@@ -101,21 +101,60 @@
     content: "";
     width: 0;
     height: 0;
-    border-top: 25px solid #00152A;
-    border-right: 32px solid transparent;
-    border-left: 32px solid transparent;
+    display: none;
+    border-top: 25px solid #212760;
+    border-right: 110px solid transparent;
+    border-left: 110px solid transparent;
     position: absolute;
     top: 100%;
-    left: calc(50% - 16px);
+    left: calc(50% - 60px);
   }
 
   .noticias {
     padding: 10px;
     margin: 14px;
-    box-shadow: inset 0 0 3px rgba(0, 0, 0, .7);
-    background: rgba(0, 0, 0, .1);
+    /* box-shadow: inset 0 0 3px rgba(0, 0, 0, .7); */
+    /* background: rgba(0, 0, 0, .1); */
     border-radius: 5px;
+    overflow-y: auto;
+    max-height: 200px;
+    width: 45%;
+    transition: all .2s  ease-in-out;
+    pointer-events: none;
   }
+
+@media screen and (max-width: 600px) {
+  .noticias {
+    max-height: 400px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .noticias { width: 90%; }
+}
+
+  /* width */
+.noticias::-webkit-scrollbar {
+    width: 8px;
+    display: none;
+}
+
+/* Track */
+.noticias::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 10px;
+}
+
+/* Handle */
+.noticias::-webkit-scrollbar-thumb {
+    background: #00152A;
+    border-radius: 5px;
+}
+
+/* Handle on hover */
+.noticias::-webkit-scrollbar-thumb:hover {
+    background: #004588;
+}
 
   .fadeInUp {
 -webkit-animation-name: fadeInUp;

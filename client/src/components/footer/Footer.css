@@ -1,0 +1,120 @@
+.footer {
+  display: grid;
+  height: 100%;
+  background: #1F2250;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  grid-gap: 10px 10px;
+  padding-top: 36px;
+  grid-template-areas: ". footer__start footer__middle footer__end ."
+                       ". copyright copyright copyright .";
+}
+
+.footer__start { grid-area: footer__start; }
+
+.footer__middle, .footer__end { grid-area: footer__middle; }
+
+.footer__end { grid-area: footer__end; }
+
+.copyright { grid-area: copyright; }
+
+.footer__start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 20px;
+}
+
+.footer__start img {
+  max-width: 80px;
+  max-height: 80px;
+}
+
+.footer__start span {
+  font-family: Radiance-Semibold;
+  font-size: 1.8em;
+  color: #fefefe;
+  margin-left: 2px;
+}
+
+.footer__middle, .footer__end {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.footer h2 {
+  font-family: Montserrat;
+  color: #fefefe;
+  text-align: left;
+}
+
+.footer ul {
+  list-style: none;
+  text-align: left;
+  flex: 1;
+  border-left: .2px solid #5D6397;
+  padding-left: 8px;
+  margin-left: 16px;
+}
+
+.footer ul li a {
+  font-family: Radiance;
+  color: #fefefe;
+  font-size: 1.2em;
+  text-decoration: none;
+}
+
+.copyright {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  font-family: Lato;
+  font-size: 1.2em;
+  color: #fefefe;
+}
+
+@media screen and (max-width: 800px) {
+  .footer ul {
+    text-align: center;
+    border: none;
+  }
+
+  .footer h2 {
+    text-align: center;
+  }
+
+  .footer {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-gap: 10px 10px;
+    padding-top: 36px;
+    grid-template-areas:  ". footer__start footer__start footer__start ."
+                          ". footer__middle . footer__end ."
+                          ". copyright copyright copyright .";
+  }
+}
+
+
+@media screen and (max-width: 600px) {
+  .footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+
+  .footer > *:not(.footer__start) {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+
+  .copyright {
+    margin-top: 20px;
+    font-size: 1em;
+  }
+
+}
