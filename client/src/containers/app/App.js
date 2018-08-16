@@ -12,6 +12,13 @@ import '../../css/Fonts.css';
 const store = createStore(() => {});
 
 class App extends Component {
+
+  componentDidMount() {
+    window.logout = function() {
+      localStorage.removeItem('ONEDESTINY_TOKEN_KEY');
+    }
+  }
+
   render() {
     return (
       <Provider store={store}>

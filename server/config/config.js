@@ -1,3 +1,3 @@
 module.exports = {
-  TOKEN_SECRET_KEY: 'Ne4K2MnZk@'
+  token_secret_key: 'Ne4K2MnZk@'
 }

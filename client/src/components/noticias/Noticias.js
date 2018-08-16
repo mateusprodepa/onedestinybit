@@ -44,7 +44,6 @@ class Noticias extends Component {
     // Number(window.getComputedStyle(e.target).height.match(/\d*/gi)[0]);
     // e.target.clientHeight 220
 
-
     if(e.scrollTop + e.clientHeight >= e.scrollHeight) {
       e.scrollTop = 0;
     } else {
@@ -54,12 +53,17 @@ class Noticias extends Component {
     }
   }
 
+  onResize = () =>
+    this.scrollBar(this.noticias.current);
+
   componentDidMount() {
     this.fetchNews();
+    window.addEventListener('resize', this.onResize);
   }
 
   componentWillUnmount() {
     clearInterval(this.scrollInterval);
+    window.removeEventListener('resize', this.onResize);
   }
 
   render() {

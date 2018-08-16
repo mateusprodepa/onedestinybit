@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import './Noticia.css'
 
@@ -13,5 +14,12 @@ const noticia = props => (
       </div>
     </div>
   )
+
+noticia.propTypes = {
+  title: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
+  img: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired
+}
 
 export default noticia;

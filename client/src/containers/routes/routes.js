@@ -19,13 +19,23 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
   )} />
 )
 
+const UnregisteredUsersRoute = ({ component: Component, ...rest }) => (
+  <Route { ...rest } render={props => (
+    !isAuthenticated() ? (
+      <Component { ...props } />
+    ) : (
+      <Redirect to={{ pathname: '/user', state: { from: props.location } }} />
+    )
+  )} />
+)
+
 const routes = () => (
   <BrowserRouter>
     <Switch>
       <Route component={ HomePage } path="/" exact strict />
-      <Route component={ LoginPage } path="/login" exact strict />
+      <UnregisteredUsersRoute component={ LoginPage } path="/login" exact strict />
       <Route render={() => <h1>Eu sou a página de registro</h1>} path="/register" exact strict />
-      <PrivateRoute render={() => <h1>Eu sou a página de perfil</h1>} path="/user" exact strict />
+      <PrivateRoute component={() => <h1>Eu sou a página de perfil</h1>} path="/user" exact strict />
     </Switch>
   </BrowserRouter>
 )
