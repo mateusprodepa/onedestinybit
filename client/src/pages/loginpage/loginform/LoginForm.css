@@ -139,7 +139,7 @@
 }
 
 .closed {
-  filter: grayscale(100%) blur(.6px);
+  filter: grayscale(100%);
   pointer-events: none;
 }
 
@@ -152,7 +152,6 @@
   to {
     flex: 5;
     border-radius: 0;
-    transform: scale(1);
   }
 }
 
