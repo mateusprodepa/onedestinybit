@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 
 // VARIÁVEIS DE AMBIENTE
 const app = express();
-const port = process.env.PORT || 5000;
+const port = process.env.PORT || 2500;
 
 // ENDPOINTS DA NOSSA API >>
 const onedestiny_news = require('./routes/News');

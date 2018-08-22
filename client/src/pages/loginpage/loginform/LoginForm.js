@@ -123,7 +123,7 @@ class LoginForm extends Component {
         style: errors.password ? style : null,
         border: errors.password ? borderStyle : null
       }
-      
+
     }
 
     return (
@@ -136,20 +136,16 @@ class LoginForm extends Component {
           placeholder = "Insira seu nome de usuário"
           changed     = { e => this.updateInputHandler(e) }
           value       = { this.state.username }
-          border      = { validations.username.border }
-          style       = { validations.username.style }
-          error       = { validations.username.error } />
+          errors      = { validations.username } />
 
         <Input
           label       = "Sua Senha"
-          name        = "senha"
+          name        = "password"
           type        = "password"
           placeholder = "Coloque a sua senha aqui"
           changed     = { e => this.updateInputHandler(e) }
           value       = { this.state.password }
-          border      = { validations.password.border }
-          style       = { validations.password.style }
-          error       = { validations.password.error } />
+          errors      = { validations.password } />
 
         <SocialMedia />
 
@@ -163,12 +159,6 @@ class LoginForm extends Component {
     )
   }
 }
-
-/*
-History, domínio do endereço do navegador
- Utilizado para redirecionar o usuário para
- A sua página de perfil ao executar o login
-*/
 
 LoginForm.propTypes = {
   history: PropTypes.object.isRequired

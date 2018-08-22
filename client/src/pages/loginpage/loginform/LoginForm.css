@@ -137,6 +137,7 @@
   animation-duration: 1.2s;
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
+  z-index: 10000;
 }
 
 .closed {

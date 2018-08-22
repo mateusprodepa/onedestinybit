@@ -1,0 +1,13 @@
+.UserBlock {
+  position: absolute;
+}
+
+.UserBlockImage {
+  max-height: 400px;
+  min-height: 350px;
+  /* background-color: #1e2328; */
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  left: 0;
+}

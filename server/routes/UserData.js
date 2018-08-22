@@ -8,11 +8,11 @@ const queries = require('../config/queries')
 
 const db = require('../db/db')
 
-router.post('/', verifyToken, (req, res) => {
+router.get('/', verifyToken, (req, res) => {
   jwt.verify(req.token, config.token_secret_key, (err, user) => {
     db.connect()
     db.query(queries.get_user_data(user.id), userData => {
-      res.json(userData)
+      res.json(JSON.parse(JSON.stringify(userData[0])))
     })
     db.end()
   })

@@ -1,14 +1,18 @@
 import React, { Component } from 'react';
 
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, compose } from 'redux';
+
+import reducer from '../../reducers/index';
 
 import Routes from '../routes/routes';
 
 import '../../css/App.css';
 import '../../css/Fonts.css';
 
-const store = createStore(() => {});
+const enhancers = compose( window.devToolsExtension ? window.devToolsExtension() : f => f);
+
+const store = createStore(reducer, enhancers);
 
 class App extends Component {
 

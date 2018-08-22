@@ -8,6 +8,7 @@ import { auth } from '../../utils/utils';
 // Páginas
 import HomePage from '../../pages/homepage/HomePage';
 import LoginPage from '../../pages/loginpage/LoginPage';
+import ProfilePage from '../../pages/profilepage/ProfilePage';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route { ...rest } render={props => (
@@ -35,7 +36,7 @@ const routes = () => (
       <Route component={ HomePage } path="/" exact strict />
       <UnregisteredUsersRoute component={ LoginPage } path="/login" exact strict />
       <Route render={() => <h1>Eu sou a página de registro</h1>} path="/register" exact strict />
-      <PrivateRoute component={() => <h1>Eu sou a página de perfil</h1>} path="/user" exact strict />
+      <PrivateRoute component={ ProfilePage } path="/user" exact strict />
     </Switch>
   </BrowserRouter>
 )

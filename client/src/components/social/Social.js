@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import PropTypes from 'prop-types';
+
 // Icons
 import GooglePlusIcon from '../../assets/icons/google-plus.png';
 import FacebookIcon from '../../assets/icons/facebook.png';
@@ -81,3 +83,18 @@ class SocialMedia extends Component {
 }
 
 export default SocialMedia;
+
+Google.propTypes = {
+  clicked: PropTypes.func.isRequired,
+  google: PropTypes.object.isRequired
+}
+
+Twitter.propTypes = {
+  clicked: PropTypes.func.isRequired,
+  twitter: PropTypes.object.isRequired
+}
+
+Facebook.propTypes = {
+  clicked: PropTypes.func.isRequired,
+  facebook: PropTypes.object.isRequired
+}

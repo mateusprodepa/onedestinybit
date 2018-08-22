@@ -5,9 +5,14 @@ const endpoints = {
   USER_DATA_URL        : 'api/oneDestinyProfile',
 }
 
+const types = {
+  GET_USER_DATA: 'GET_USER_DATA',
+}
+
 const ONEDESTINY_TOKEN_KEY = 'ONEDESTINY_TOKEN_KEY'
 
 export {
+  types,
   endpoints,
-  ONEDESTINY_TOKEN_KEY
+  ONEDESTINY_TOKEN_KEY,
 }
