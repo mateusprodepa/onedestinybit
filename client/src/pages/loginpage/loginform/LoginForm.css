@@ -116,6 +116,7 @@
 
 .social-media > div {
   cursor: pointer;
+  user-select: none;
   transition: all .5s ease-in-out;
   flex: 1;
 }

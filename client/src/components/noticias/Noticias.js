@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-import * as CONFIG from '../../config/config';
+import { endpoints } from '../../config/config';
 
 import axios from 'axios';
 
@@ -22,7 +22,7 @@ class Noticias extends Component {
 
   fetchNews() {
     this.setState({ isLoading: true });
-    axios.get(CONFIG.NEWS_URL)
+    axios.get(endpoints.NEWS_URL)
     .then(res => {
       if(res.data) {
         this.setState({

@@ -3,18 +3,16 @@ import PropTypes from 'prop-types';
 
 import './LoginForm.css';
 
+import SocialMedia from '../../../components/social/Social';
+import Input from '../../../components/formInput/Input';
+
 // Configs
-import { LOGIN_URL } from '../../../config/config';
-import { setToken } from '../../../utils/utils';
+import { endpoints } from '../../../config/config';
+import { auth } from '../../../utils/utils';
 import  * as ERRORS from '../../../config/errors';
 
 // Third party modules
 import axios from 'axios';
-
-// Icons
-import GooglePlus from '../../../assets/icons/google-plus.png';
-import Facebook from '../../../assets/icons/facebook.png';
-import Twitter from '../../../assets/icons/twitter.png';
 
 // React Router dependencies
 import { Link } from 'react-router-dom';
@@ -24,13 +22,6 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 
 class LoginForm extends Component {
-
-  constructor(props) {
-    super(props);
-    this.googlePlus = React.createRef();
-    this.facebook = React.createRef();
-    this.twitter = React.createRef();
-  }
 
   state = {
     username: '',
@@ -53,7 +44,7 @@ class LoginForm extends Component {
 
     this.setState({ errors: {} })
 
-    axios.post(LOGIN_URL, {
+    axios.post(endpoints.LOGIN_URL, {
       username,
       password
     })
@@ -68,7 +59,7 @@ class LoginForm extends Component {
       */
 
       if(res.data.token) {
-        setToken(res.data.token);
+        auth.setToken(res.data.token);
         this.props.history.push("/user")
       }
 
@@ -98,31 +89,12 @@ class LoginForm extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('keydown', (e) => this.callOnEnter(e))
+    this.onEnter = e => this.callOnEnter(e);
+    window.addEventListener('keydown', this.onEnter)
   }
 
   componentWillUnmount() {
-    window.removeEventListener('keydown', (e) => this.callOnEnter(e))
-  }
-
-  // Dinamização das classes da div redes sociais
-  animateSocialMedia = (e) => {
-    const refs = {
-      googlePlus: this.googlePlus,
-      facebook: this.facebook,
-      twitter: this.twitter
-    }
-
-    for(var x in refs) {
-      const social = refs[x].current;
-      if(social === e.target) {
-        social.classList.add('expanded');
-        setTimeout(() => social.classList.remove('expanded'), 2500);
-      } else {
-        social.classList.add('closed');
-        setTimeout(() => social.classList.remove('closed'), 2500);
-      }
-    }
+    window.removeEventListener('keydown', this.onEnter)
   }
 
   render() {
@@ -138,60 +110,53 @@ class LoginForm extends Component {
       display: "block"
     }
 
+    const validations = {
+
+      username: {
+        error: errors.username ? errors.username : null,
+        style: errors.username ? style : null,
+        border: errors.username ? borderStyle : null
+      },
+
+      password: {
+        error: errors.password ? errors.password : null,
+        style: errors.password ? style : null,
+        border: errors.password ? borderStyle : null
+      }
+      
+    }
+
     return (
       <div className="loginForm">
-        <div className="input-wrapper">
-          <label htmlFor="username">
-            Nome de Usuário
-            <input
-              name="username"
-              type="text"
-              placeholder="Insira seu nome de usuário"
-              value={ this.state.username }
-              className="inputField__input"
-              style={ errors.username ? borderStyle : null }
-              onChange={ (e) => this.updateInputHandler(e) } />
-            <span
-              style={ errors.username ? style : null }
-              className="mensagem-de-erro">{ errors.username ? errors.username : null }</span>
-          </label>
-        </div>
-        <div className="input-wrapper">
-          <label htmlFor="password">
-            Sua senha
-            <input
-              name="password"
-              type="password"
-              placeholder="Coloque a sua senha aqui"
-              value={ this.state.password }
-              className="inputField__input"
-              style={ errors.password ? borderStyle : null }
-              onChange={ (e) => this.updateInputHandler(e) } />
-            <span
-              style={ errors.password ? style : null }
-              className="mensagem-de-erro">{ errors.password ? errors.password : null }</span>
-          </label>
-        </div>
-        <div className="social-media">
-          <div
-            ref={ this.googlePlus }
-            onClick={ (e) => this.animateSocialMedia(e) }>
-            <img alt="google-plus" src={ GooglePlus } aria-label="social-media"></img>
-          </div>
-          <div
-            ref={ this.facebook }
-            onClick={ (e) => this.animateSocialMedia(e) }>
-            <img alt="facebook" src={ Facebook } aria-label="social-media"></img>
-          </div>
-          <div
-            ref={ this.twitter }
-            onClick={ (e) => this.animateSocialMedia(e) }>
-            <img alt="twitter" src={ Twitter } aria-label="social-media"></img>
-          </div>
-        </div>
+
+        <Input
+          label       = "Nome de Usuário"
+          name        = "username"
+          type        = "text"
+          placeholder = "Insira seu nome de usuário"
+          changed     = { e => this.updateInputHandler(e) }
+          value       = { this.state.username }
+          border      = { validations.username.border }
+          style       = { validations.username.style }
+          error       = { validations.username.error } />
+
+        <Input
+          label       = "Sua Senha"
+          name        = "senha"
+          type        = "password"
+          placeholder = "Coloque a sua senha aqui"
+          changed     = { e => this.updateInputHandler(e) }
+          value       = { this.state.password }
+          border      = { validations.password.border }
+          style       = { validations.password.style }
+          error       = { validations.password.error } />
+
+        <SocialMedia />
+
         <button
           id="loginInputBtn"
           onClick={ () => this.makeLoginRequest() }>Logar agora</button>
+
         <Link to="#">Esqueceu sua senha?</Link>
         <Link to="#">Não possui uma conta?</Link>
       </div>

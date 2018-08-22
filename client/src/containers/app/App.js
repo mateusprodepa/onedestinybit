@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 
 import Routes from '../routes/routes';
-// import Spinner from '../../components/spinner/Spinner';
 
 import '../../css/App.css';
 import '../../css/Fonts.css';

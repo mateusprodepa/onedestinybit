@@ -1,6 +1,21 @@
 import { ONEDESTINY_TOKEN_KEY } from '../config/config';
 
-export const isAuthenticated = () => localStorage.getItem(ONEDESTINY_TOKEN_KEY) !== null ? true : false;
-export const logout = () => localStorage.removeItem(ONEDESTINY_TOKEN_KEY);
-export const getToken = () => localStorage.getItem(ONEDESTINY_TOKEN_KEY);
-export const setToken = (token) => localStorage.setItem(ONEDESTINY_TOKEN_KEY, token);
+const auth = {
+
+  isAuthenticated: () =>
+    localStorage.getItem(ONEDESTINY_TOKEN_KEY) !== null ? true : false,
+
+  logout: () =>
+    localStorage.removeItem(ONEDESTINY_TOKEN_KEY),
+
+  getToken: () =>
+    localStorage.getItem(ONEDESTINY_TOKEN_KEY),
+
+  setToken: token =>
+    localStorage.setItem(ONEDESTINY_TOKEN_KEY, token)
+
+}
+
+export {
+  auth
+}
