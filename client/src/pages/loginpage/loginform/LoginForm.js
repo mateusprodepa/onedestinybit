@@ -39,11 +39,22 @@ class LoginForm extends Component {
   }
 
 
+  updateUsernameError = erro => this.setState({ errors: { ...this.state.errors, username: erro } })
+  updatePasswordError = erro => this.setState({ errors: { ...this.state.errors, password: erro } })
+
   /* Função responsável pela requisição para a endpoint de login da api */
   makeLoginRequest = () => {
     const { username, password } = this.state;
 
     this.setState({ errors: {} })
+
+    if(username.length === 0) {
+      return this.updateUsernameError('Eu não sei bem, mas suspeito que você esqueceu de algo...');
+    }
+
+    if(password.length === 0) {
+      return this.updatePasswordError('Eu não sei bem, mas suspeito que você esqueceu de algo...');
+    }
 
     axios.post(endpoints.LOGIN_URL, {
       username,
