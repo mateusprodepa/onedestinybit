@@ -1,14 +1,11 @@
 import { types } from '../config/config';
-import { user as userActions } from '../utils/utils';
 
 function user(state = [], action) {
   switch(action.type) {
-    case types.GET_USER_DATA:
-      const userData = userActions.fetchUserInformation();
-      console.log(userData);
+    case types.SET_USER_DATA:
       return [
         ...state,
-        userData
+        { profile: action.data }
       ]
     default:
       return state;

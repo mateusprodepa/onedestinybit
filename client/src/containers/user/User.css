@@ -2,12 +2,59 @@
   position: absolute;
 }
 
-.UserBlockImage {
+.UserProfileBlock {
   max-height: 400px;
   min-height: 350px;
-  /* background-color: #1e2328; */
+  background-color: #1F2250;
   width: 100vw;
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.UserProfileWrapper {
+  position: absolute;
+  bottom: 0;
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.UserProfileFlex {
+  display: flex;
+  align-items: flex-end;
+  position: relative;
+  width: 70%;
+  margin: 0 auto;
+  /* background-color: #000; */
+}
+
+.UserBlockName {
+  font-family: Radiance;
+  font-size: 1.6em;
+  color: #fefefe;
+  flex: 1;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: right;
+}
+
+.UserBlockName h3 {
+  padding: 5px 20px 5px 0;
+  margin-left: 35px;
+  background: #5D6397;
+  border-radius: 15px 0 0 15px;
+  box-shadow: 0 1.5px 3px rgba(0, 0, 0, 0.3);
+}
+
+/* .UserBlockImage {
+} */
+
+.UserProfileImage {
+  width: 190px;
+  height: 190px;
+  border-radius: 50%;
+  border: 2px solid #fefefe;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  transform: translateY(25%);
 }

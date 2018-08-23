@@ -1,11 +1,10 @@
 import {
-  ONEDESTINY_TOKEN_KEY,
-  endpoints
+  ONEDESTINY_TOKEN_KEY
 } from '../config/config';
 
 import axios from 'axios';
 
-const userRequest = async function(URL) {
+export async function userRequest(URL) {
 
   return new Promise((resolve, reject) => {
 
@@ -25,13 +24,6 @@ const userRequest = async function(URL) {
   // if(userData) return userData;
 }
 
-const getUserData = async function() {
-  let userData;
-  await userRequest(endpoints.USER_DATA_URL).then(response => userData = response);
-
-  return userData;
-}
-
 const auth = {
 
   isAuthenticated: () =>
@@ -47,14 +39,6 @@ const auth = {
     localStorage.setItem(ONEDESTINY_TOKEN_KEY, token)
 }
 
-const user = {
-  fetchUserInformation: () => {
-    const userData = getUserData();
-    return userData;
-  }
-}
-
 export {
   auth,
-  user
 }

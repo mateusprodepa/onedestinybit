@@ -9,12 +9,13 @@ module.exports = {
 
   validage_login_request: function(user, credentials) {
     let errors = {}
+
     if(!user) {
       return errors = { ...errors, username: 'É este mesmo o seu nome de usuário?' }
     }
 
     if(user.username.length === 0 || user.username === null || user.username === "") {
-      errors = { ...errors, username: "Não deixe seu usuário em branco" }
+      return errors = { ...errors, username: "Eu não sei bem, mas suspeito que você esqueceu de algo..." }
     }
 
     if(credentials.password.length === 0) {

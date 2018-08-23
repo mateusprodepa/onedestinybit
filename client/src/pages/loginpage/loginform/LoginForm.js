@@ -4,7 +4,8 @@ import PropTypes from 'prop-types';
 import './LoginForm.css';
 
 import SocialMedia from '../../../components/social/Social';
-import Input from '../../../components/formInput/Input';
+import Input from '../../../components/form/input/Input';
+import Button from '../../../components/form/button/Button';
 
 // Configs
 import { endpoints } from '../../../config/config';
@@ -149,9 +150,7 @@ class LoginForm extends Component {
 
         <SocialMedia />
 
-        <button
-          id="loginInputBtn"
-          onClick={ () => this.makeLoginRequest() }>Logar agora</button>
+        <Button id="loginInputBtn" clicked={ this.makeLoginRequest }/>
 
         <Link to="#">Esqueceu sua senha?</Link>
         <Link to="#">Não possui uma conta?</Link>
