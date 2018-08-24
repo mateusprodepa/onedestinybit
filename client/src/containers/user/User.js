@@ -29,13 +29,17 @@ class UserBlock extends Component {
   }
 
   renderUserProfileImage = () => {
-
     const userImg = this.state.user.Usuario_Imagem ?
                     this.state.user.Usuario_Imagem :
                     tmp.USER_IMG
 
     return (
-      <img alt="userImage" className="UserProfileImage" src={ userImg } />
+      <div>
+        <img
+          alt="userImage"
+          className="UserProfileImage"
+          src={ userImg } />
+      </div>
     )
 
   }
@@ -67,6 +71,7 @@ class UserBlock extends Component {
     if(this.props.user.length <= 0) {
       this.fetchUserData()
       .then(data => {
+        console.log(data);
         this.updateUserState(data);
       })
     } else {
